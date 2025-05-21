@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Closed Beta</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0a0a0a;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      padding: 20px;
+      border: 1px solid #2a2a2a;
+      background-color: #111;
+      border-radius: 12px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+    p {
+      color: #aaa;
+      margin-bottom: 24px;
+    }
+    input[type="text"] {
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      background-color: #1e1e1e;
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+      margin-bottom: 16px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #4bffb3;
+      color: #000;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #38d98e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Closed Beta Access</h1>
+    <p>Access is available only with an invitation code.</p>
+    <form action="#" method="POST">
+      <input type="text" placeholder="Enter access code" name="access_code" required />
+      <button type="submit">Enter</button>
+    </form>
+  </div>
+</body>
+</html>
