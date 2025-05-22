@@ -37,23 +37,25 @@
     }
 
     .square {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: #4BFFB3;
-      animation: fall linear infinite;
-    }
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #7fffdf; /* Ярче цвет */
+  box-shadow: 0 0 10px #7fffdf; /* Светящееся свечение */
+  animation: fall linear infinite;
+  opacity: 1; /* Устанавливаем начальную прозрачность */
+}
 
     @keyframes fall {
-      0% {
-        transform: translateY(-10px);
-        opacity: 0.1;
-      }
-      100% {
-        transform: translateY(100vh);
-        opacity: 0;
-      }
-    }
+  0% {
+    transform: translateY(-10px);
+    opacity: 1; /* Начальная прозрачность — полностью видим */
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0.3; /* Конечная — всё ещё видно */
+  }
+}
 
     /* Затемнение для улучшения читаемости */
     .overlay {
