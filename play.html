@@ -15,39 +15,35 @@
 
     body {
       font-family: 'Inter', sans-serif;
+      background-color: #0a0a0a;
       height: 100vh;
       overflow: hidden;
-      background-color: #0a0a0a;
-      color: #fff;
       position: relative;
+      color: #fff;
     }
 
+    /* Анимированный фон */
     .background {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: #0a0a0a;
       overflow: hidden;
       z-index: 0;
     }
 
     .square {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: #00D72C; /* новый цвет */
-  animation: fall linear infinite;
-  opacity: 1;
-  border-radius: 2px; /* опционально: чуть округлим как у них */
-}
-
+      position: absolute;
+      background: #00D72C;
+      opacity: 0.4;
+      animation: fall linear forwards;
+    }
 
     @keyframes fall {
       0% {
-        transform: translateY(-20px);
-        opacity: 0.5;
+        transform: translateY(-10px);
+        opacity: 0.4;
       }
       100% {
         transform: translateY(100vh);
@@ -55,6 +51,7 @@
       }
     }
 
+    /* Контейнер с формой */
     .container {
       position: relative;
       z-index: 2;
@@ -103,7 +100,7 @@
       font-size: 16px;
       border: none;
       border-radius: 8px;
-      background-color: #4bffb3;
+      background-color: #00D72C;
       color: #000;
       cursor: pointer;
       transition: background-color 0.2s ease;
@@ -111,13 +108,14 @@
     }
 
     button:hover {
-      background-color: #38d98e;
+      background-color: #00b924;
     }
   </style>
 </head>
 <body>
   <div class="background" id="background"></div>
 
+  <!-- Твой блок формы -->
   <div class="container">
     <div class="form-box">
       <h1>Closed Beta</h1>
@@ -132,36 +130,27 @@
   <script>
     const background = document.getElementById('background');
 
-    const colors = [
-      '#4bffb3',
-      '#5cffc7',
-      '#66ffd1',
-      '#70ffdd',
-      '#80ffe8',
-      '#99fff1'
-    ];
-
     function createSquare() {
       const square = document.createElement('div');
       square.classList.add('square');
 
-      const size = Math.random() * 15 + 10; // 4px–10px
+      const size = Math.random() * 6 + 4; // от 4px до 10px
       square.style.width = `${size}px`;
       square.style.height = `${size}px`;
+
       square.style.left = `${Math.random() * window.innerWidth}px`;
 
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      square.style.background = color;
-      square.style.animationDuration = `${Math.random() * 3 + 3}s`; // 3–6s
+      const duration = Math.random() * 4 + 3; // 3–7 секунд
+      square.style.animationDuration = `${duration}s`;
 
       background.appendChild(square);
 
       setTimeout(() => {
         square.remove();
-      }, 8000);
+      }, duration * 1000);
     }
 
-    setInterval(createSquare, 60); // Много, но не слишком
+    setInterval(createSquare, 100);
   </script>
 </body>
 </html>
