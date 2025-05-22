@@ -22,7 +22,6 @@
       color: #fff;
     }
 
-    /* Анимированный фон */
     .background {
       position: fixed;
       top: 0;
@@ -51,7 +50,6 @@
       }
     }
 
-    /* Контейнер с формой */
     .container {
       position: relative;
       z-index: 2;
@@ -80,7 +78,7 @@
 
     p {
       color: #aaa;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
 
     input[type="text"] {
@@ -92,7 +90,7 @@
       color: #fff;
       font-size: 16px;
       outline: none;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     button {
@@ -110,47 +108,70 @@
     button:hover {
       background-color: #00b924;
     }
+
+    .error-message {
+      color: #ff4d4d;
+      margin-top: 10px;
+      font-size: 14px;
+      display: none;
+    }
   </style>
 </head>
 <body>
   <div class="background" id="background"></div>
 
-  <!-- Твой блок формы -->
   <div class="container">
     <div class="form-box">
       <h1>Private Launch</h1>
       <p>Access is available only with an invitation code</p>
-      <form action="#" method="POST">
-        <input type="text" placeholder="Enter access code" name="access_code" required />
+      <form id="access-form">
+        <input type="text" id="access-code" placeholder="Enter access code" name="access_code" required />
         <button type="submit">Enter</button>
+        <div class="error-message" id="error-message">Invalid code. Please try again.</div>
       </form>
     </div>
   </div>
 
   <script>
+    // Анимация квадратов
     const background = document.getElementById('background');
-
     function createSquare() {
       const square = document.createElement('div');
       square.classList.add('square');
-
-      const size = Math.random() * 16 + 4; // от 4px до 10px
+      const size = Math.random() * 16 + 4;
       square.style.width = `${size}px`;
       square.style.height = `${size}px`;
-
       square.style.left = `${Math.random() * window.innerWidth}px`;
-
-      const duration = Math.random() * 4 + 3; // 3–7 секунд
+      const duration = Math.random() * 4 + 3;
       square.style.animationDuration = `${duration}s`;
-
       background.appendChild(square);
-
-      setTimeout(() => {
-        square.remove();
-      }, duration * 1000);
+      setTimeout(() => square.remove(), duration * 1000);
     }
-
     setInterval(createSquare, 25);
+
+    // Проверка формы
+    const form = document.getElementById('access-form');
+    const input = document.getElementById('access-code');
+    const errorMessage = document.getElementById('error-message');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const code = input.value.trim();
+
+      const validCode = "12345"; // ← поменяй на свой реальный код
+
+      if (code === validCode) {
+        // Вход успешен — можешь здесь сделать redirect
+        alert("Access granted!");
+        // window.location.href = "/dashboard.html";
+      } else {
+        errorMessage.style.display = 'block';
+      }
+    });
+
+    input.addEventListener('input', () => {
+      errorMessage.style.display = 'none'; // скрывать ошибку при вводе
+    });
   </script>
 </body>
 </html>
