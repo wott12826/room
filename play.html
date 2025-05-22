@@ -22,7 +22,6 @@
       position: relative;
     }
 
-    /* Анимированный фон */
     .background {
       position: fixed;
       top: 0;
@@ -38,17 +37,17 @@
       position: absolute;
       border-radius: 2px;
       animation: fall linear infinite;
-      opacity: 1;
+      opacity: 0.5;
     }
 
     @keyframes fall {
       0% {
         transform: translateY(-20px);
-        opacity: 1;
+        opacity: 0.5;
       }
       100% {
         transform: translateY(100vh);
-        opacity: 0.2;
+        opacity: 0;
       }
     }
 
@@ -129,14 +128,13 @@
   <script>
     const background = document.getElementById('background');
 
-    const neonColors = [
-      '#39FF14',  // неоново-зелёный
-      '#00FFC6',  // бирюзовый
-      '#00FFB2',
-      '#32ff7e',
+    const colors = [
       '#4bffb3',
-      '#66ffcc',
-      '#80ffe8'
+      '#5cffc7',
+      '#66ffd1',
+      '#70ffdd',
+      '#80ffe8',
+      '#99fff1'
     ];
 
     function createSquare() {
@@ -148,20 +146,18 @@
       square.style.height = `${size}px`;
       square.style.left = `${Math.random() * window.innerWidth}px`;
 
-      const color = neonColors[Math.floor(Math.random() * neonColors.length)];
+      const color = colors[Math.floor(Math.random() * colors.length)];
       square.style.background = color;
-      square.style.boxShadow = `0 0 8px ${color}, 0 0 16px ${color}`;
-      square.style.animationDuration = `${Math.random() * 4 + 4}s`;
+      square.style.animationDuration = `${Math.random() * 3 + 3}s`; // 3–6s
 
       background.appendChild(square);
 
       setTimeout(() => {
         square.remove();
-      }, 10000);
+      }, 8000);
     }
 
-    // Увеличена частота (каждые 70 мс)
-    setInterval(createSquare, 70);
+    setInterval(createSquare, 60); // Много, но не слишком
   </script>
 </body>
 </html>
