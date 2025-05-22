@@ -34,11 +34,15 @@
     }
 
     .square {
-      position: absolute;
-      border-radius: 2px;
-      animation: fall linear infinite;
-      opacity: 0.5;
-    }
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #00D72C; /* новый цвет */
+  animation: fall linear infinite;
+  opacity: 1;
+  border-radius: 2px; /* опционально: чуть округлим как у них */
+}
+
 
     @keyframes fall {
       0% {
